@@ -1,0 +1,41 @@
+Title	:	RANA - (Kasterborous)
+
+Author	:	Søren V. Jørgensen 
+
+Email	:	sojoe02@gmail.com
+
+Desc: Agent Based Simulator, for simulating animal calling behaviour with high precision. The animal agents are designated auton. There is a Lua interface for designing autons behaviour, via the Lua Auton interface.
+
+Provides an Ncurses user interface, for setting up and running the simulation. For data processing event data can be saved to a binary file and loaded into the Visualizer https://github.com/sojoe02/Kasterborous_Visualizer.
+
+-Requires Ncurses and Lua5.2, Revised CmakeFind files provided, as the existing Ncurses didn't find the panel.h or form.h libraries. There is no official FindLUA52 scripts either so i rewrote the one for version 5.1.
+
+Interface Commands are:
+
+F1 : Activate Input panel (default).
+F2 : Activate Run panel.
+F3 : Show Auton Positions, if an environment is generated
+F5 : Execute Command (gen, gen_squared, run)
+F6 : Stop Running Simulation
+Ctrl-Q : Quit Kasterborous
+
+Program Arguments:
+
+-s <number> = screamer Auton amount,	default = 0.
+-l <number> = listener Auton amount,	default = 0.
+-L <number> = Lua Auton amount,		default = 0.
+-f <string> = Lua Auton filename,	default = frog.lua.
+-m <number> = macroFactor,		default = 1000 (1 pr millisecond).
+-w <float> = map width[m],		default = 600[m] 
+-h <float> = map height[m],		default = 400[m]
+-t <float> = timeResolution[s],		default = 0.000001 (1 pr microsecond, or 0.36[mm] in regards to sound travel)
+-c <float> = command			default = run, starts a simulation. (gen = generates an environment, gen_squared generates a squared environment).
+
+Program Commands:
+'run'	starts a simulation, will run 'gen' if the autons haven't been placed..
+'gen'	generates an environment, by randomly placing the different autons throughpout the environment.
+'gen-l'	generates an environment with only listener autons (amount = listenerAmount^2 * nesteneAmount), they are placed in a grid with equal distance to eachother.
+'gen-L'	same as above just with Lua autons instead.
+
+
+This program is released under the GPVL3 license.
